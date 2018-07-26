@@ -1,7 +1,25 @@
 const todolist = [
-  { id: 0, content: 'todo1', complete: false, readOnly: true, visible: true },
-  { id: 1, content: 'todo2', complete: false, readOnly: true, visible: true },
-  { id: 2, content: 'todo3', complete: false, readOnly: true, visible: true }
+  {
+    id: 1000000,
+    content: 'todo1',
+    complete: false,
+    readOnly: true,
+    visible: true
+  },
+  {
+    id: 2000000,
+    content: 'todo2',
+    complete: false,
+    readOnly: true,
+    visible: true
+  },
+  {
+    id: 3000000,
+    content: 'todo3',
+    complete: false,
+    readOnly: true,
+    visible: true
+  }
 ];
 
 const todos = (state = todolist, action) => {
