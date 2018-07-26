@@ -1,12 +1,14 @@
 import React from 'react';
 import Header from './Header';
 import VisibleToDoList from '../container/VisibleToDoList';
-import AddTodo from '../container/AddTodo';
+import AddToDo from '../container/AddToDo';
+import FilterToDo from '../container/FilterToDo';
 
 const App = () => (
   <div>
     <Header />
-    <AddTodo />
+    <AddToDo />
+    <FilterToDo />
     <VisibleToDoList />
   </div>
 );

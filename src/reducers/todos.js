@@ -17,20 +17,21 @@ const todos = (state = todolist, action) => {
         }
       ];
     case 'CLICK_TO_EDIT':
-      return [
-        // ...state,
-        // {
-        //   id: action.id,
-        //   content: action.text,
-        //   completed: false
-        // }
-      ];
+      console.log('click_to_edit', action.text);
+      return state.map(
+        todo =>
+          todo.text === action.text ? { ...todo, content: action.text } : todo
+      );
     case 'CLICK_TO_DONE':
-      console.log('click', '');
+      console.log('click_to_done', '');
       return state.map(
         todo =>
           todo.id === action.id ? { ...todo, completed: !todo.completed } : todo
       );
+    case 'FILTER_TODO':
+      console.log('filter_to_do', '');
+      return state.filter(todo => todo.content == action.text);
+
     default:
       return state;
   }

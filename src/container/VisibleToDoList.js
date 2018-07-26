@@ -6,15 +6,16 @@ const todos = state => ({
   todos: state.todos
 });
 
-const edit = dispatch => ({
-  clickToEdit: id => dispatch(clickToEdit(id))
-});
+// const edit = dispatch => ({
+//   clickToEdit: id => dispatch(clickToEdit(id))
+// });
 
-const done = dispatch => ({
-  clickToDone: id => dispatch(clickToDone(id))
+const mapPropsToDispathc = dispatch => ({
+  clickToDone: id => dispatch(clickToDone(id)),
+  clickToEdit: id => dispatch(clickToEdit(id))
 });
 
 export default connect(
   todos,
-  done
+  mapPropsToDispathc
 )(ToDoList);

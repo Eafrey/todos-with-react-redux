@@ -22,6 +22,14 @@ class Header extends PureComponent {
   }
 }
 
+// const Header = ({ headers }) => (
+//     <div>
+//         <span>{headers.avator}</span>
+//         <span>{headers.name}</span>
+//         <span>{headers.gender}</span>
+//     </div>
+// )
+
 Header.propTypes = {
   headers: PropTypes.shape({
     avator: PropTypes.string.isRequired,

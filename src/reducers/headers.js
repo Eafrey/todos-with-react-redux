@@ -1,5 +1,5 @@
 const userInfos = {
-  avaror: 'avator',
+  avator: 'avator',
   name: 'chs',
   gender: 'male'
 };

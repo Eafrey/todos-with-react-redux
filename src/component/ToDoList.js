@@ -6,6 +6,7 @@ import { clickToEdit } from '../actions';
 
 class ToDoList extends PureComponent {
   constructor(props) {
+    console.log('todos', props.todos);
     super(props);
   }
 

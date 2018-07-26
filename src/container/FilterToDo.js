@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addToDo } from '../actions';
+import { filterToDo } from '../actions';
 
-const AddTodo = ({ dispatch }) => {
+const FilterTodo = ({ dispatch }) => {
   let input;
 
   return (
@@ -13,15 +13,16 @@ const AddTodo = ({ dispatch }) => {
           if (!input.value.trim()) {
             return;
           }
-          dispatch(addToDo(input.value));
+          console.log('filterToDo(input.value)', input.value);
+          dispatch(filterToDo(input.value));
           input.value = '';
         }}
       >
         <input ref={node => (input = node)} />
-        <button type="submit">Add Todo</button>
+        <button type="submit">filter ToDo</button>
       </form>
     </div>
   );
 };
 
-export default connect()(AddTodo);
+export default connect()(FilterTodo);
