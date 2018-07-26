@@ -9,6 +9,20 @@ const Todo = ({
   deleteTodo
 }) => {
   let input;
+  const createTime = new Date(todo.id);
+  const month = parseInt(createTime.getMonth()) + 1;
+  const formatTime =
+    createTime.getFullYear() +
+    '-' +
+    month +
+    '-' +
+    createTime.getDate() +
+    ' ' +
+    createTime.getHours() +
+    ':' +
+    createTime.getMinutes() +
+    ':' +
+    createTime.getSeconds();
 
   return (
     <div className="row">
@@ -21,7 +35,7 @@ const Todo = ({
           type="text"
           className="form-control"
           ref={node => (input = node)}
-          defaultValue={todo.content}
+          defaultValue={todo.content + ', create time:' + formatTime}
           readOnly={todo.readOnly}
           style={
             todo.complete === true ? { textDecoration: 'line-through' } : {}
@@ -32,6 +46,7 @@ const Todo = ({
             changeEditStatus(todo.id);
           }}
         />
+
         <span className="input-group-btn">
           <button
             className="btn btn-danger"
