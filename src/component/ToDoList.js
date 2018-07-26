@@ -7,20 +7,18 @@ class ToDoList extends PureComponent {
   render() {
     return (
       <div>
-        <ul>
-          {this.props.todos.map(todo => {
-            return (
-              <Todo
-                key={todo.id}
-                todo={todo}
-                changeEditStatus={this.props.changeEditStatus}
-                clickToEdit={this.props.clickToEdit}
-                clickToDone={this.props.clickToDone}
-                deleteTodo={this.props.deleteTodo}
-              />
-            );
-          })}
-        </ul>
+        {this.props.todos.map(todo => {
+          return (
+            <Todo
+              key={todo.id}
+              todo={todo}
+              changeEditStatus={this.props.changeEditStatus}
+              clickToEdit={this.props.clickToEdit}
+              clickToDone={this.props.clickToDone}
+              deleteTodo={this.props.deleteTodo}
+            />
+          );
+        })}
       </div>
     );
   }

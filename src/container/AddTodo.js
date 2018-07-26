@@ -6,20 +6,22 @@ const AddTodo = ({ dispatch }) => {
   let input;
 
   return (
-    <div>
-      <form
-        onSubmit={e => {
-          e.preventDefault();
-          if (!input.value.trim()) {
-            return;
-          }
-          dispatch(addToDo(input.value));
-          input.value = '';
-        }}
-      >
-        <input ref={node => (input = node)} />
-        <button type="submit">Add Todo</button>
-      </form>
+    <div className="row input-group">
+      <input className="form-control" ref={node => (input = node)} />
+      <span className="input-group-btn">
+        <button
+          className="btn btn-default"
+          onClick={() => {
+            if (!input.value.trim()) {
+              return;
+            }
+            dispatch(addToDo(input.value));
+            input.value = '';
+          }}
+        >
+          Add ToDo
+        </button>
+      </span>
     </div>
   );
 };

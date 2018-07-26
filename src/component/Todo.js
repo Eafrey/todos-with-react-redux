@@ -11,21 +11,37 @@ const Todo = ({
   let input;
 
   return (
-    <div>
-      <input type="checkbox" onClick={() => clickToDone(todo.id)} />
-      <input
-        ref={node => (input = node)}
-        type="text"
-        defaultValue={todo.content}
-        readOnly={todo.readOnly}
-        style={todo.complete === true ? { textDecoration: 'line-through' } : {}}
-        onDoubleClick={() => changeEditStatus(todo.id)}
-        onBlur={() => {
-          clickToEdit(todo.id, input.value);
-          changeEditStatus(todo.id);
-        }}
-      />
-      <button onClick={() => deleteTodo(todo.id)}>X</button>
+    <div className="row">
+      {/* <div className="col-lg-8"> */}
+      <div className="input-group">
+        <span className="input-group-addon">
+          <input type="checkbox" onClick={() => clickToDone(todo.id)} />
+        </span>
+        <input
+          type="text"
+          className="form-control"
+          ref={node => (input = node)}
+          defaultValue={todo.content}
+          readOnly={todo.readOnly}
+          style={
+            todo.complete === true ? { textDecoration: 'line-through' } : {}
+          }
+          onDoubleClick={() => changeEditStatus(todo.id)}
+          onBlur={() => {
+            clickToEdit(todo.id, input.value);
+            changeEditStatus(todo.id);
+          }}
+        />
+        <span className="input-group-btn">
+          <button
+            className="btn btn-danger"
+            onClick={() => deleteTodo(todo.id)}
+          >
+            X
+          </button>
+        </span>
+        {/* </div> */}
+      </div>
     </div>
   );
 };

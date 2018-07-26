@@ -3,29 +3,17 @@ import PropTypes from 'prop-types';
 
 class Header extends PureComponent {
   render() {
-    //   const userInfos = this.props.getUserInfo("");
-    // console.log('render userInfos', userInfos);
-
     return (
-      <div>
-        {/* <span>avator </span>
-        <span>name </span>
-        <span>gender</span> */}
-        <span>{this.props.headers['avator']}</span>
-        <span>{this.props.headers['name']}</span>
-        <span>{this.props.headers['gender']}</span>
+      <div className="page-header">
+        <h1>
+          {this.props.headers['avator']}
+          <small>{this.props.headers['name']}</small>
+          <span>{this.props.headers['gender']}</span>
+        </h1>
       </div>
     );
   }
 }
-
-// const Header = ({ headers }) => (
-//     <div>
-//         <span>{headers.avator}</span>
-//         <span>{headers.name}</span>
-//         <span>{headers.gender}</span>
-//     </div>
-// )
 
 Header.propTypes = {
   headers: PropTypes.shape({

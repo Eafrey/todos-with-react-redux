@@ -7,9 +7,9 @@ import FilterToDo from '../container/FilterToDo';
 const App = () => (
   <div>
     <HeadersInfo />
-    <AddToDo />
     <FilterToDo />
     <VisibleToDoList />
+    <AddToDo />
   </div>
 );
 

@@ -6,18 +6,19 @@ const FilterTodo = ({ dispatch }) => {
   let input;
 
   return (
-    <div>
-      <form
-        onSubmit={e => {
-          e.preventDefault();
-
-          dispatch(filterToDo(input.value));
-          input.value = '';
-        }}
-      >
-        <input ref={node => (input = node)} />
-        <button type="submit">filter ToDo</button>
-      </form>
+    <div className="row input-group">
+      <input className="form-control" ref={node => (input = node)} />
+      <span className="input-group-btn">
+        <button
+          className="btn btn-default"
+          onClick={() => {
+            dispatch(filterToDo(input.value));
+            input.value = '';
+          }}
+        >
+          Filter ToDo
+        </button>
+      </span>
     </div>
   );
 };
