@@ -3,8 +3,9 @@ export const addToDo = text => ({
   text
 });
 
-export const clickToEdit = text => ({
+export const clickToEdit = (id, text) => ({
   type: 'CLICK_TO_EDIT',
+  id,
   text
 });
 
@@ -16,4 +17,9 @@ export const clickToDone = id => ({
 export const filterToDo = text => ({
   type: 'FILTER_TODO',
   text
+});
+
+export const changeEditStatus = id => ({
+  type: 'CHANGE_EDIT_STATUS',
+  id
 });

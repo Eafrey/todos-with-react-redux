@@ -1,21 +1,24 @@
 import { connect } from 'react-redux';
 import ToDoList from '../component/ToDoList';
-import { clickToEdit, clickToDone } from '../actions/index';
+import { clickToEdit, clickToDone, changeEditStatus } from '../actions/index';
 
-const todos = state => ({
-  todos: state.todos
-});
+const todos = state => {
+  return {
+    todos: state.todos.filter(item => item.visible === true)
+  };
+};
 
 // const edit = dispatch => ({
 //   clickToEdit: id => dispatch(clickToEdit(id))
 // });
 
-const mapPropsToDispathc = dispatch => ({
+const mapPropsToDispathch = dispatch => ({
   clickToDone: id => dispatch(clickToDone(id)),
-  clickToEdit: id => dispatch(clickToEdit(id))
+  clickToEdit: (id, text) => dispatch(clickToEdit(id, text)),
+  changeEditStatus: id => dispatch(changeEditStatus(id))
 });
 
 export default connect(
   todos,
-  mapPropsToDispathc
+  mapPropsToDispathch
 )(ToDoList);

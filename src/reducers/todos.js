@@ -1,37 +1,44 @@
 const todolist = [
-  { id: 1, content: 'todo1', complete: false },
-  { id: 2, content: 'todo2', complete: false },
-  { id: 3, content: 'todo3', complete: false }
+  { id: 0, content: 'todo1', complete: false, readOnly: true, visible: true },
+  { id: 1, content: 'todo2', complete: false, readOnly: true, visible: true },
+  { id: 2, content: 'todo3', complete: false, readOnly: true, visible: true }
 ];
 
 const todos = (state = todolist, action) => {
   switch (action.type) {
     case 'ADD_TODO':
-      console.log('add', '');
       return [
         ...state,
         {
-          id: action.id,
+          id: state.length,
           content: action.text,
-          completed: false
+          completed: false,
+          readOnly: true,
+          visible: true
         }
       ];
     case 'CLICK_TO_EDIT':
-      console.log('click_to_edit', action.text);
       return state.map(
         todo =>
-          todo.text === action.text ? { ...todo, content: action.text } : todo
+          todo.id === action.id ? { ...todo, content: action.text } : todo
       );
     case 'CLICK_TO_DONE':
-      console.log('click_to_done', '');
       return state.map(
         todo =>
-          todo.id === action.id ? { ...todo, completed: !todo.completed } : todo
+          todo.id === action.id ? { ...todo, complete: !todo.complete } : todo
+      );
+    case 'CHANGE_EDIT_STATUS':
+      return state.map(
+        todo =>
+          todo.id === action.id ? { ...todo, readOnly: !todo.readOnly } : todo
       );
     case 'FILTER_TODO':
-      console.log('filter_to_do', '');
-      return state.filter(todo => todo.content == action.text);
-
+      return state.map(
+        todo =>
+          todo.content.includes(action.text)
+            ? { ...todo, visible: true }
+            : { ...todo, visible: false }
+      );
     default:
       return state;
   }

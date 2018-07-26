@@ -2,21 +2,18 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
 class Header extends PureComponent {
-  constructor(props) {
-    console.log('cons headers', props.headers);
-    super(props);
-  }
-
   render() {
-    console.log('headers', this.props.headers);
+    //   const userInfos = this.props.getUserInfo("");
+    // console.log('render userInfos', userInfos);
+
     return (
       <div>
-        <span>avator </span>
+        {/* <span>avator </span>
         <span>name </span>
-        <span>gender</span>
-        {/* <span>{this.props.header["avator"]}</span>
-            <button>{this.props.header["name"]}</button>
-            <button>{this.props.header["gender"]}</button> */}
+        <span>gender</span> */}
+        <span>{this.props.headers['avator']}</span>
+        <span>{this.props.headers['name']}</span>
+        <span>{this.props.headers['gender']}</span>
       </div>
     );
   }

@@ -10,10 +10,7 @@ const FilterTodo = ({ dispatch }) => {
       <form
         onSubmit={e => {
           e.preventDefault();
-          if (!input.value.trim()) {
-            return;
-          }
-          console.log('filterToDo(input.value)', input.value);
+
           dispatch(filterToDo(input.value));
           input.value = '';
         }}
