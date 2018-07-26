@@ -10,7 +10,7 @@ const todos = (state = todolist, action) => {
       return [
         ...state,
         {
-          id: state.length,
+          id: Date.now(),
           content: action.text,
           completed: false,
           readOnly: true,
