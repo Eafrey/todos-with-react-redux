@@ -1,7 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Todo = ({ todo, clickToDone, clickToEdit, changeEditStatus }) => {
+const Todo = ({
+  todo,
+  clickToDone,
+  clickToEdit,
+  changeEditStatus,
+  deleteTodo
+}) => {
   let input;
 
   return (
@@ -19,6 +25,7 @@ const Todo = ({ todo, clickToDone, clickToEdit, changeEditStatus }) => {
           changeEditStatus(todo.id);
         }}
       />
+      <button onClick={() => deleteTodo(todo.id)}>X</button>
     </div>
   );
 };

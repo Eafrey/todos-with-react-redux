@@ -1,6 +1,11 @@
 import { connect } from 'react-redux';
 import ToDoList from '../component/ToDoList';
-import { clickToEdit, clickToDone, changeEditStatus } from '../actions/index';
+import {
+  clickToEdit,
+  clickToDone,
+  changeEditStatus,
+  deleteTodo
+} from '../actions/index';
 
 const todos = state => {
   return {
@@ -15,7 +20,8 @@ const todos = state => {
 const mapPropsToDispathch = dispatch => ({
   clickToDone: id => dispatch(clickToDone(id)),
   clickToEdit: (id, text) => dispatch(clickToEdit(id, text)),
-  changeEditStatus: id => dispatch(changeEditStatus(id))
+  changeEditStatus: id => dispatch(changeEditStatus(id)),
+  deleteTodo: id => dispatch(deleteTodo(id))
 });
 
 export default connect(

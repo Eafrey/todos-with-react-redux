@@ -39,6 +39,8 @@ const todos = (state = todolist, action) => {
             ? { ...todo, visible: true }
             : { ...todo, visible: false }
       );
+    case 'DELETE_TODO':
+      return state.filter(item => action.id !== item.id);
     default:
       return state;
   }

@@ -23,3 +23,8 @@ export const changeEditStatus = id => ({
   type: 'CHANGE_EDIT_STATUS',
   id
 });
+
+export const deleteTodo = id => ({
+  type: 'DELETE_TODO',
+  id
+});

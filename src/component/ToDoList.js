@@ -16,6 +16,7 @@ class ToDoList extends PureComponent {
                 changeEditStatus={this.props.changeEditStatus}
                 clickToEdit={this.props.clickToEdit}
                 clickToDone={this.props.clickToDone}
+                deleteTodo={this.props.deleteTodo}
               />
             );
           })}
