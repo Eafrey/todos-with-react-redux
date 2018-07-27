@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { push } from 'connected-react-router';
 
 const Todo = ({
   todo,
@@ -44,7 +45,7 @@ const Todo = ({
         </span>
 
         <span className="input-group-addon">
-          <NavLink
+          <Link
             to={togo}
             activeStyle={{
               textDecoration: 'none',
@@ -52,7 +53,7 @@ const Todo = ({
             }}
           >
             detail
-          </NavLink>
+          </Link>
         </span>
 
         <input
@@ -69,6 +70,7 @@ const Todo = ({
             clickToEdit(todo.id, input.value);
             changeEditStatus(todo.id);
           }}
+          onClick={() => push(`/todo-detail/${todo.id}`)}
         />
 
         <span className="input-group-addon">

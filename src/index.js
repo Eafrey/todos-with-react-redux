@@ -1,29 +1,52 @@
 import React from 'react';
 import './index.css';
-// import App from './App';
-// import App from './component/App';
-import { render } from 'react-dom';
-import { createStore } from 'redux';
-// import { Provider } from 'react-redux';
+import ReactDOM from 'react-dom';
+import { createStore, compose } from 'redux';
 import 'bootstrap/dist/css/bootstrap.css';
-import rootReducer from './reducers';
+import reducers from './reducers';
+import { Provider } from 'react-redux';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import App from './component/App';
+import Detail from './component/Detail';
+import registerServiceWorker from './registerServiceWorker';
 
-// ReactDOM.render(<App />, document.getElementById('root'));
-// registerServiceWorker();
+import { connect } from 'react-redux';
+import {
+  ConnectedRouter,
+  routerMiddleware,
+  connectRouter
+} from 'connected-react-router';
 
-// const store = createStore(
-//   rootReducer,
-//   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-// );
+import { applyMiddleware } from 'redux';
+import createHistory from 'history/createBrowserHistory';
 
-// render(
-//   <Provider store={store}>
-//     <App />
-//   </Provider>,
-//   document.getElementById('root')
-// );
+import { Switch } from 'react-router';
 
-import Root from './component/Root';
+// const store = createStore(rootReducer);
 
-const store = createStore(rootReducer);
-render(<Root store={store} />, document.getElementById('root'));
+// render(<Provider store={store}>
+
+//   <Router>
+//     <Route path="/:id?" component={App} />
+//   </Router>
+// </Provider>, document.getElementById('root'));
+
+const history = createHistory();
+
+const store = createStore(
+  connectRouter(history)(reducers),
+  compose(applyMiddleware(routerMiddleware(history)))
+);
+
+ReactDOM.render(
+  <Provider store={store}>
+    <ConnectedRouter history={history}>
+      <Switch>
+        <Route exact path="/" component={App} />
+        <Route path="/todo-detail/:id" component={Detail} />
+      </Switch>
+    </ConnectedRouter>
+  </Provider>,
+  document.getElementById('root')
+);
+registerServiceWorker();
