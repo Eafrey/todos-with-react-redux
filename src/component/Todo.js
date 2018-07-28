@@ -1,7 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-import { push } from 'connected-react-router';
 
 const Todo = ({
   todo,
@@ -13,7 +11,7 @@ const Todo = ({
 }) => {
   let input;
   const timeStrap = new Date(todo.id);
-  const month = parseInt(timeStrap.getMonth()) + 1;
+  const month = parseInt(timeStrap.getMonth(), 10) + 1;
   const createTime =
     timeStrap.getFullYear() +
     '-' +
@@ -27,17 +25,6 @@ const Todo = ({
     ':' +
     timeStrap.getSeconds();
 
-  const togo =
-    '/' +
-    'id:' +
-    todo.id +
-    ',   content:' +
-    todo.content +
-    ',   create time:' +
-    createTime +
-    ',   completeStatus:' +
-    todo.complete;
-
   return (
     <div className="row">
       <div className="input-group">
@@ -45,19 +32,10 @@ const Todo = ({
           <input type="checkbox" onClick={() => clickToDone(todo.id)} />
         </span>
 
-        <span className="input-group-addon">
-          {/* <Link
-            to={`/todo-detail/${todo.id}`}
-            activeStyle={{
-              textDecoration: 'none',
-              color: 'black'
-            }}
-          >
-            detail
-          </Link> */}
+        <span className="input-group-btn">
           <button
+            className="btn btn-info"
             onClick={() => {
-              console.log('/todo-detail/${todo.id}', todo.id);
               push(`/todo-detail/${todo.id}`);
             }}
           >

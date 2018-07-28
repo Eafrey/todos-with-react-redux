@@ -30,7 +30,7 @@ const todos = (state = todolist, action) => {
         {
           id: Date.now(),
           content: action.text,
-          completed: false,
+          complete: false,
           readOnly: true,
           visible: true
         }
