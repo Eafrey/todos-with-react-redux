@@ -32,5 +32,6 @@
     "eject": "react-scripts eject",
     "build-css": "node-sass-chokidar src/ -o src/",
     "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive"
-  }
+  },
+  "homepage": "https://eafrey.github.io/todos-with-react-redux/"
 }
