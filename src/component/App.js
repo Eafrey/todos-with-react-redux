@@ -1,15 +1,15 @@
 import React from 'react';
-import HeadersInfo from '../container/HeaderInfo';
-import VisibleToDoList from '../container/VisibleToDoList';
+import HeaderInfoContainer from '../container/HeaderInfoContainer';
+import ToDoListContainer from '../container/ToDoListContainer';
 import AddToDo from '../container/AddTodo';
 import FilterToDo from '../container/FilterToDo';
 
 const App = () => {
   return (
     <div>
-      <HeadersInfo />
+      <HeaderInfoContainer />
       <FilterToDo />
-      <VisibleToDoList />
+      <ToDoListContainer />
       <AddToDo />
     </div>
   );

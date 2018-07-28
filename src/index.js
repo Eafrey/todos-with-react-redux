@@ -7,7 +7,7 @@ import reducers from './reducers';
 import { Provider } from 'react-redux';
 import { Route } from 'react-router-dom';
 import App from './component/App';
-import Detail from './component/Detail';
+import Detail from './container/Detail';
 import registerServiceWorker from './registerServiceWorker';
 
 import {
