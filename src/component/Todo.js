@@ -8,7 +8,8 @@ const Todo = ({
   clickToDone,
   clickToEdit,
   changeEditStatus,
-  deleteTodo
+  deleteTodo,
+  push
 }) => {
   let input;
   const timeStrap = new Date(todo.id);
@@ -45,15 +46,23 @@ const Todo = ({
         </span>
 
         <span className="input-group-addon">
-          <Link
-            to={togo}
+          {/* <Link
+            to={`/todo-detail/${todo.id}`}
             activeStyle={{
               textDecoration: 'none',
               color: 'black'
             }}
           >
             detail
-          </Link>
+          </Link> */}
+          <button
+            onClick={() => {
+              console.log('/todo-detail/${todo.id}', todo.id);
+              push(`/todo-detail/${todo.id}`);
+            }}
+          >
+            detail
+          </button>
         </span>
 
         <input
