@@ -57,7 +57,7 @@ const Todo = ({
             clickToEdit(todo.id, input.value);
             changeEditStatus(todo.id);
           }}
-          onClick={() => push(`/todo-detail/${todo.id}`)}
+          // onClick={() => push(`/todo-detail/${todo.id}`)}
         />
 
         <span className="input-group-addon">

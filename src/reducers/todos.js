@@ -59,6 +59,13 @@ const todos = (state = todolist, action) => {
       );
     case 'DELETE_TODO':
       return state.filter(item => action.id !== item.id);
+    case 'GET_TODOS_FROM_SERVER':
+      fetch('api/todos')
+        .then(data => data.json())
+        .then(list => {
+          console.log('list', list);
+        });
+      return [...action.list];
     default:
       return state;
   }

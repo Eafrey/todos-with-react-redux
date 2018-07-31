@@ -28,3 +28,8 @@ export const deleteTodo = id => ({
   type: 'DELETE_TODO',
   id
 });
+
+export const getToDosFromServer = list => ({
+  type: 'GET_TODOS_FROM_SERVER',
+  list
+});
