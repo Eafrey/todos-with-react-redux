@@ -18,7 +18,7 @@ const todos = state => {
 //   clickToEdit: id => dispatch(clickToEdit(id))
 // });
 
-const mapPropsToDispathch = dispatch => ({
+const mapDispatchToProps = dispatch => ({
   clickToDone: id => dispatch(clickToDone(id)),
   clickToEdit: (id, text) => dispatch(clickToEdit(id, text)),
   changeEditStatus: id => dispatch(changeEditStatus(id)),
@@ -28,5 +28,5 @@ const mapPropsToDispathch = dispatch => ({
 
 export default connect(
   todos,
-  mapPropsToDispathch
+  mapDispatchToProps
 )(ToDoList);

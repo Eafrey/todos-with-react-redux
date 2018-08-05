@@ -10,6 +10,7 @@ import App from './component/App';
 import Detail from './container/Detail';
 import registerServiceWorker from './registerServiceWorker';
 import thunk from 'redux-thunk';
+import Login from './container/Login';
 
 import {
   ConnectedRouter,
@@ -33,8 +34,9 @@ ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
       <Switch>
-        <Route exact path="/" component={App} />
+        <Route exact path="/" component={Login} />
         <Route path="/todo-detail/:id" component={Detail} />
+        <Route path="/todos" component={App} />
       </Switch>
     </ConnectedRouter>
   </Provider>,
