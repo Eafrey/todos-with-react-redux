@@ -44,15 +44,15 @@ class Login extends PureComponent {
               this.props.push(`/register`);
             }}
           >
-            register
+            no account? go register
           </button>
           <button
             type="button"
             className="btn btn-default"
             onClick={() => {
               this.props.loginToServer(userName.value, password.value);
-              this.props.push(`/todos`);
-              this.props.setUserName(userName.value);
+              // this.props.push(`/todos`);
+              // this.props.setUserName(userName.value);
             }}
           >
             log in

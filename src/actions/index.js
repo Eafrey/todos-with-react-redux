@@ -1,3 +1,60 @@
+import { push } from 'connected-react-router';
+
+export const loginToServer = (userName, password) => dispatch => {
+  console.log('start loginToServer');
+  console.log(
+    'log in body',
+    JSON.stringify({
+      userName: userName,
+      password: password
+    })
+  );
+  dispatch(changeLoginState('log in...'));
+  fetch('./api/login', {
+    method: 'POST',
+    body: JSON.stringify({
+      userName: userName,
+      password: password
+    }),
+    headers: new Headers({
+      'Content-Type': 'application/json'
+    })
+  })
+    .then(response => response.text())
+    .then(token => {
+      console.log('token', token);
+      if (token === 'log in failed') {
+        console.log('log in fail');
+        dispatch(changeLoginState('log in fail'));
+      } else {
+        localStorage.token = token;
+        console.log('log in success');
+        dispatch(changeLoginState(''));
+        dispatch(push('/todos'));
+      }
+    });
+};
+
+export const registerToServer = (userName, password) => dispatch => {
+  console.log('start registerToServer');
+  dispatch(changeRegisterState('register...'));
+  fetch('./api/users', {
+    method: 'POST',
+    body: JSON.stringify({
+      userName: userName,
+      password: password
+    }),
+    headers: new Headers({
+      'Content-Type': 'application/json'
+    })
+  })
+    .then(response => response.text())
+    .then(text => {
+      console.log('text', text);
+      dispatch(changeRegisterState(text));
+    });
+};
+
 export const addToDo = text => ({
   type: 'ADD_TODO',
   text
@@ -44,65 +101,10 @@ export const changeRegisterState = state => ({
   state
 });
 
-export const loginToServer = (userName, password) => {
-  console.log('start loginToServer');
-  console.log(
-    'log in body',
-    JSON.stringify({
-      userName: userName,
-      password: password
-    })
-  );
-  let loginRes;
-  fetch('./api/login', {
-    method: 'POST',
-    body: JSON.stringify({
-      userName: userName,
-      password: password
-    }),
-    headers: new Headers({
-      'Content-Type': 'application/json'
-    })
-  })
-    .then(response => response.text())
-    .then(token => {
-      console.log('token', token);
-      localStorage.token = token;
-      if (token === 'log in failed') {
-        loginRes = token;
-      } else {
-        loginRes = 'log in success';
-      }
-    });
-  return {
-    type: 'LOG_IN_TO_SERVER',
-    res: loginRes
-  };
-};
-
-export const registerToServer = (userName, password) => {
-  console.log('start registerToServer');
-  let registerRes;
-  fetch('./api/users', {
-    method: 'POST',
-    body: JSON.stringify({
-      userName: userName,
-      password: password
-    }),
-    headers: new Headers({
-      'Content-Type': 'application/json'
-    })
-  })
-    .then(response => response.text())
-    .then(text => {
-      console.log('text', text);
-      registerRes = text;
-    });
-  return {
-    type: 'REGISTER_TO_SERVER',
-    res: registerRes
-  };
-};
+export const changeLoginState = state => ({
+  type: 'CHANGE_LOGIN_STATE',
+  state
+});
 
 export const addTodoToServer = text => {
   console.log('start addTodoToServer');
