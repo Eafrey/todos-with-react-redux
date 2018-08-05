@@ -10,10 +10,12 @@ const GetServerList = ({ dispatch }) => {
         onClick={() => {
           fetch('/api/todos')
             .then(response => {
-              console.log('respones', response);
               return response.json();
             })
-            .then(json => dispatch(getToDosFromServer(json)));
+            .then(json => {
+              console.log('getAllTodos:', json);
+              return dispatch(getToDosFromServer(json));
+            });
         }}
       >
         Get Todos From Server

@@ -3,7 +3,6 @@ import HeaderInfoContainer from '../container/HeaderInfoContainer';
 import ToDoListContainer from '../container/ToDoListContainer';
 import AddToDo from '../container/AddTodo';
 import FilterToDo from '../container/FilterToDo';
-import GetServerList from '../container/GetServerList';
 import { getToDosFromServer } from '../actions';
 import { connect } from 'react-redux';
 
@@ -21,17 +20,17 @@ import { connect } from 'react-redux';
 // export default App;
 
 export class App extends PureComponent {
-  // componentDidMount() {
-  //   fetch("http://localhost/api/todos")
-  //     .then(response => response.json())
-  //     .then(json => this.props.getToDosFromServer(json));
-  // }
+  componentDidMount() {
+    fetch('http://localhost/api/todos')
+      .then(response => response.json())
+      .then(json => this.props.getToDosFromServer(json));
+  }
 
   render() {
     return (
       <div>
         <HeaderInfoContainer />
-        <GetServerList />
+        {/* <GetServerList /> */}
         <FilterToDo />
         <ToDoListContainer />
         <AddToDo />

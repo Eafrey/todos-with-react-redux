@@ -9,6 +9,7 @@ import { Route } from 'react-router-dom';
 import App from './component/App';
 import Detail from './container/Detail';
 import registerServiceWorker from './registerServiceWorker';
+import thunk from 'redux-thunk';
 
 import {
   ConnectedRouter,
@@ -25,7 +26,7 @@ const history = createHistory();
 
 const store = createStore(
   connectRouter(history)(reducers),
-  compose(applyMiddleware(routerMiddleware(history)))
+  compose(applyMiddleware(thunk, routerMiddleware(history)))
 );
 
 ReactDOM.render(
