@@ -11,6 +11,7 @@ import Detail from './container/Detail';
 import registerServiceWorker from './registerServiceWorker';
 import thunk from 'redux-thunk';
 import Login from './container/Login';
+import Register from './container/Register';
 
 import {
   ConnectedRouter,
@@ -35,6 +36,7 @@ ReactDOM.render(
     <ConnectedRouter history={history}>
       <Switch>
         <Route exact path="/" component={Login} />
+        <Route path="/register" component={Register} />
         <Route path="/todo-detail/:id" component={Detail} />
         <Route path="/todos" component={App} />
       </Switch>

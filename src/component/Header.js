@@ -7,8 +7,7 @@ class Header extends PureComponent {
       <div className="page-header">
         <h1>
           {this.props.headers['avator']}
-          <small>{this.props.headers['name']}</small>
-          <span>{this.props.headers['gender']}</span>
+          <small>name: {this.props.headers['name']}</small>
         </h1>
       </div>
     );

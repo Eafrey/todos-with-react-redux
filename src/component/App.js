@@ -21,7 +21,12 @@ import { connect } from 'react-redux';
 
 export class App extends PureComponent {
   componentDidMount() {
-    fetch('http://localhost/api/todos')
+    fetch('http://localhost/api/todos', {
+      method: 'GET',
+      headers: new Headers({
+        Authorization: localStorage.getItem('token')
+      })
+    })
       .then(response => response.json())
       .then(json => this.props.getToDosFromServer(json));
   }
