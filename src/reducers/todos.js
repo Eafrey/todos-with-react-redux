@@ -51,6 +51,8 @@ const todolist = [
 
 const todos = (state = todolist, action) => {
   switch (action.type) {
+    case 'ADD_TODO_TO_SERVER':
+      return [...state, action.todo];
     case 'ADD_TODO':
       return [
         ...state,
@@ -85,6 +87,8 @@ const todos = (state = todolist, action) => {
             ? { ...todo, visible: true }
             : { ...todo, visible: false }
       );
+    case 'DELETE_TODO_IN_SERVER':
+      return state.filter(item => action.id !== item.id);
     case 'DELETE_TODO':
       return state.filter(item => action.id !== item.id);
     case 'GET_TODOS_FROM_SERVER':

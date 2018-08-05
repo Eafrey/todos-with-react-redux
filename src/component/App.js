@@ -21,6 +21,7 @@ import { connect } from 'react-redux';
 
 export class App extends PureComponent {
   componentDidMount() {
+    console.log('get todo token', localStorage.getItem('token'));
     fetch('http://localhost/api/todos', {
       method: 'GET',
       headers: new Headers({

@@ -7,6 +7,7 @@ const Todo = ({
   clickToEdit,
   changeEditStatus,
   deleteTodo,
+  deleteTodoInServer,
   push
 }) => {
   let input;
@@ -70,14 +71,14 @@ const Todo = ({
           <span className="input-group-btn">
             <button
               className="btn btn-danger"
-              onClick={() => deleteTodo(todo.id)}
+              onClick={() => deleteTodoInServer(todo.id)}
             >
               X
             </button>
           </span>
         </div>
 
-        <ul className="list-group">
+        {/* <ul className="list-group">
           {tasks.map(task => {
             return (
               <li key={task.id} className="list-group-item">
@@ -85,7 +86,7 @@ const Todo = ({
               </li>
             );
           })}
-        </ul>
+        </ul> */}
       </div>
 
       <div className="row input-group">

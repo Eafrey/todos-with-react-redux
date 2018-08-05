@@ -17,6 +17,7 @@ class ToDoList extends PureComponent {
               clickToDone={this.props.clickToDone}
               deleteTodo={this.props.deleteTodo}
               push={this.props.push}
+              deleteTodoInServer={this.props.deleteTodoInServer}
             />
           );
         })}

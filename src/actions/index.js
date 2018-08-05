@@ -49,7 +49,10 @@ export const loginToServer = (userName, password) => {
   let loginRes;
   fetch('./api/login', {
     method: 'POST',
-    body: '{"userName": "user-8","password":"123456"}',
+    body: JSON.stringify({
+      userName: userName,
+      password: password
+    }),
     headers: new Headers({
       'Content-Type': 'application/json'
     })
@@ -57,12 +60,12 @@ export const loginToServer = (userName, password) => {
     .then(response => response.text())
     .then(token => {
       console.log('token', token);
+      localStorage.token = token;
       if (token == 'log in failed') {
         loginRes = token;
       } else {
-        token = 'log in success';
+        loginRes = 'log in success';
       }
-      localStorage.token = token;
     });
   return {
     type: 'LOG_IN_TO_SERVER',
@@ -94,8 +97,17 @@ export const registerToServer = (userName, password) => {
   };
 };
 
-export const addTodoToServer = todo => {
+export const addTodoToServer = text => {
   console.log('start addTodoToServer');
+  console.log('add todo token', localStorage.getItem('token'));
+  let todo = {};
+  todo.content = text;
+  todo.complete = false;
+  todo.readOnly = true;
+  todo.visible = true;
+  (todo.date = Date.now()), (todo.tasks = []);
+  console.log('add todo todo', todo);
+
   fetch('./api/todos', {
     method: 'POST',
     body: JSON.stringify(todo),
@@ -104,12 +116,34 @@ export const addTodoToServer = todo => {
       Authorization: localStorage.getItem('token')
     })
   })
-    .then(response => response.json())
-    .then(json => {
-      json;
-      // localStorage.token = token;
+    .then(response => response.status)
+    .then(status => {
+      console.log('add todo status', status);
+      status;
     });
   return {
-    type: 'ADD_TODO_TO_SERVER'
+    type: 'ADD_TODO_TO_SERVER',
+    todo
+  };
+};
+
+export const deleteTodoInServer = id => {
+  console.log('start deleteTodoInServer');
+  console.log('delete todo token', localStorage.getItem('token'));
+
+  fetch(`./api/todos/${id}`, {
+    method: 'DELETE',
+    headers: new Headers({
+      Authorization: localStorage.getItem('token')
+    })
+  })
+    .then(response => response.status)
+    .then(status => {
+      console.log('delete todo status', status);
+      status;
+    });
+  return {
+    type: 'DELETE_TODO_IN_SERVER',
+    id
   };
 };

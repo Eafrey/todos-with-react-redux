@@ -4,7 +4,8 @@ import {
   clickToEdit,
   clickToDone,
   changeEditStatus,
-  deleteTodo
+  deleteTodo,
+  deleteTodoInServer
 } from '../actions/index';
 import { push } from 'connected-react-router';
 
@@ -23,7 +24,8 @@ const mapDispatchToProps = dispatch => ({
   clickToEdit: (id, text) => dispatch(clickToEdit(id, text)),
   changeEditStatus: id => dispatch(changeEditStatus(id)),
   deleteTodo: id => dispatch(deleteTodo(id)),
-  push: id => dispatch(push(id))
+  push: id => dispatch(push(id)),
+  deleteTodoInServer: id => dispatch(deleteTodoInServer(id))
 });
 
 export default connect(
