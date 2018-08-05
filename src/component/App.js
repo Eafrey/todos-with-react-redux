@@ -1,23 +1,10 @@
 import React, { PureComponent } from 'react';
-import HeaderInfoContainer from '../container/HeaderInfoContainer';
-import ToDoListContainer from '../container/ToDoListContainer';
-import AddToDo from '../container/AddTodo';
-import FilterToDo from '../container/FilterToDo';
+import HeaderInfo from '../component/Header';
+import ToDoList from '../component/ToDoList';
+import AddToDo from '../component/AddTodo';
+import FilterToDo from '../component/FilterToDo';
 import { getToDosFromServer } from '../actions';
 import { connect } from 'react-redux';
-
-// const App = () => {
-//   return (
-//     <div>
-//       <HeaderInfoContainer />
-//       <GetServerList />
-//       <FilterToDo />
-//       <ToDoListContainer />
-//       <AddToDo />
-//     </div>
-//   );
-// };
-// export default App;
 
 export class App extends PureComponent {
   componentDidMount() {
@@ -35,10 +22,10 @@ export class App extends PureComponent {
   render() {
     return (
       <div>
-        <HeaderInfoContainer />
+        <HeaderInfo />
         {/* <GetServerList /> */}
         <FilterToDo />
-        <ToDoListContainer />
+        <ToDoList />
         <AddToDo />
       </div>
     );

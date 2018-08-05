@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 class Header extends PureComponent {
   render() {
@@ -22,4 +23,8 @@ Header.propTypes = {
   }).isRequired
 };
 
-export default Header;
+const headers = state => ({
+  headers: state.headers
+});
+
+export default connect(headers)(Header);

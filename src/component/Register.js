@@ -61,11 +61,11 @@ class Register extends PureComponent {
                 console.log('name', name);
                 console.log('p1', pswd1);
                 console.log('p2', pswd2);
-                if (name == '') {
+                if (name === '') {
                   this.props.changeRegisterState('username should not be null');
                   return;
                 }
-                if (pswd1 == '') {
+                if (pswd1 === '') {
                   this.props.changeRegisterState('password not be null');
                   return;
                 }
@@ -83,9 +83,7 @@ class Register extends PureComponent {
             type="button"
             className="btn btn-default"
             onClick={() => {
-              {
-                this.props.push('/');
-              }
+              this.props.push('/');
             }}
           >
             Go To Log in

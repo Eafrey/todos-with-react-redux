@@ -46,6 +46,13 @@ export const changeRegisterState = state => ({
 
 export const loginToServer = (userName, password) => {
   console.log('start loginToServer');
+  console.log(
+    'log in body',
+    JSON.stringify({
+      userName: userName,
+      password: password
+    })
+  );
   let loginRes;
   fetch('./api/login', {
     method: 'POST',
@@ -61,7 +68,7 @@ export const loginToServer = (userName, password) => {
     .then(token => {
       console.log('token', token);
       localStorage.token = token;
-      if (token == 'log in failed') {
+      if (token === 'log in failed') {
         loginRes = token;
       } else {
         loginRes = 'log in success';
@@ -105,7 +112,8 @@ export const addTodoToServer = text => {
   todo.complete = false;
   todo.readOnly = true;
   todo.visible = true;
-  (todo.date = Date.now()), (todo.tasks = []);
+  todo.date = Date.now();
+  todo.tasks = [];
   console.log('add todo todo', todo);
 
   fetch('./api/todos', {
@@ -119,7 +127,7 @@ export const addTodoToServer = text => {
     .then(response => response.status)
     .then(status => {
       console.log('add todo status', status);
-      status;
+      // status;
     });
   return {
     type: 'ADD_TODO_TO_SERVER',
@@ -140,7 +148,7 @@ export const deleteTodoInServer = id => {
     .then(response => response.status)
     .then(status => {
       console.log('delete todo status', status);
-      status;
+      // status;
     });
   return {
     type: 'DELETE_TODO_IN_SERVER',

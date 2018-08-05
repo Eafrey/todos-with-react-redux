@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { filterToDo } from '../actions';
 
-const FilterTodo = ({ dispatch }) => {
+const FilterTodo = ({ filterToDo }) => {
   let input;
 
   return (
@@ -12,7 +12,7 @@ const FilterTodo = ({ dispatch }) => {
         <button
           className="btn btn-default"
           onClick={() => {
-            dispatch(filterToDo(input.value));
+            filterToDo(input.value);
             input.value = '';
           }}
         >
@@ -23,4 +23,11 @@ const FilterTodo = ({ dispatch }) => {
   );
 };
 
-export default connect()(FilterTodo);
+const mapDispatchToProps = dispatch => ({
+  filterToDo: text => dispatch(filterToDo(text))
+});
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(FilterTodo);

@@ -7,11 +7,11 @@ import reducers from './reducers';
 import { Provider } from 'react-redux';
 import { Route } from 'react-router-dom';
 import App from './component/App';
-import Detail from './container/Detail';
+import Detail from './component/Detail';
 import registerServiceWorker from './registerServiceWorker';
 import thunk from 'redux-thunk';
-import Login from './container/Login';
-import Register from './container/Register';
+import Login from './component/Login';
+import Register from './component/Register';
 
 import {
   ConnectedRouter,
