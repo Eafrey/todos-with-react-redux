@@ -106,7 +106,16 @@ export const changeLoginState = state => ({
   state
 });
 
-export const addTodoToServer = text => {
+export const addTask = text => ({
+  type: 'ADD_TASKS',
+  text
+});
+
+export const clearTask = () => ({
+  type: 'CLEAR_TASKS'
+});
+
+export const addTodoToServer = (text, tasks) => {
   console.log('start addTodoToServer');
   console.log('add todo token', localStorage.getItem('token'));
   let todo = {};
@@ -115,7 +124,7 @@ export const addTodoToServer = text => {
   todo.readOnly = true;
   todo.visible = true;
   todo.date = Date.now();
-  todo.tasks = [];
+  todo.tasks = tasks;
   console.log('add todo todo', todo);
 
   fetch('./api/todos', {

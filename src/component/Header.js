@@ -5,11 +5,11 @@ import { connect } from 'react-redux';
 class Header extends PureComponent {
   render() {
     return (
-      <div className="page-header">
-        <h1>
-          {this.props.headers['avator']}
-          <small>name: {this.props.headers['name']}</small>
-        </h1>
+      <div>
+        <div className="page-header">
+          <h1>{this.props.headers['name']}</h1>
+          {/* <h2>{this.props.headers["name"]}</h2> */}
+        </div>
       </div>
     );
   }

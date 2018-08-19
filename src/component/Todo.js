@@ -89,22 +89,15 @@ class ToDo extends PureComponent {
             </span>
           </div>
 
-          {/* <ul className="list-group">
-          {tasks.map(task => {
-            return (
-              <li key={task.id} className="list-group-item">
-                {task.task}
-              </li>
-            );
-          })}
-        </ul> */}
-        </div>
-
-        <div className="row input-group">
-          <input className="form-control" ref={node => (input = node)} />
-          <span className="input-group-btn">
-            <button className="btn btn-default">Add Task</button>
-          </span>
+          <ul className="list-group">
+            {tasks.map(task => {
+              return (
+                <li key={task.id} className="list-group-item">
+                  {task.task}
+                </li>
+              );
+            })}
+          </ul>
         </div>
       </div>
     );

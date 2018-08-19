@@ -1,23 +1,67 @@
 import React, { PureComponent } from 'react';
 
 import { connect } from 'react-redux';
-import { addTodoToServer } from '../actions';
+import { addTodoToServer, addTask, clearTask } from '../actions';
 class AddTodo extends PureComponent {
   render() {
-    let input;
+    let inputTodo;
+    let inputTask;
+
+    let tasks = this.props.tasks;
 
     return (
-      <div className="row input-group">
-        <input className="form-control" ref={node => (input = node)} />
+      <div>
+        <div className="row">
+          <input
+            className="form-control"
+            placeholder="todo content"
+            ref={node => (inputTodo = node)}
+          />
+        </div>
+
+        <div className="row input-group">
+          <input
+            className="form-control"
+            placeholder="task content"
+            ref={node => (inputTask = node)}
+          />
+          <span className="input-group-btn">
+            <button
+              className="btn btn-default"
+              onClick={() => {
+                if (!inputTask.value.trim()) {
+                  return;
+                }
+                this.props.addTask(inputTask.value);
+                inputTask.value = '';
+              }}
+            >
+              Add Task
+            </button>
+          </span>
+        </div>
+
+        <ul className="list-group">
+          {tasks.map(task => {
+            return (
+              <li key={task.id} className="list-group-item">
+                {task.task}
+              </li>
+            );
+          })}
+        </ul>
+
         <span className="input-group-btn">
           <button
             className="btn btn-default"
             onClick={() => {
-              if (!input.value.trim()) {
+              if (!inputTodo.value.trim()) {
                 return;
               }
-              this.props.addTodoToServer(input.value);
-              input.value = '';
+              console.log('taskssss', tasks);
+              this.props.addTodoToServer(inputTodo.value, tasks);
+              this.props.clearTask();
+              inputTodo.value = '';
             }}
           >
             Add ToDo
@@ -28,11 +72,19 @@ class AddTodo extends PureComponent {
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    tasks: state.tasks
+  };
+};
+
 const mapDispatchToProps = dispatch => ({
-  addTodoToServer: text => dispatch(addTodoToServer(text))
+  addTodoToServer: (text, tasks) => dispatch(addTodoToServer(text, tasks)),
+  addTask: text => dispatch(addTask(text)),
+  clearTask: () => dispatch(clearTask())
 });
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(AddTodo);

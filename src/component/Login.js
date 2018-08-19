@@ -51,6 +51,7 @@ class Login extends PureComponent {
             className="btn btn-default"
             onClick={() => {
               this.props.loginToServer(userName.value, password.value);
+              this.props.setUserName(userName);
               // this.props.push(`/todos`);
               // this.props.setUserName(userName.value);
             }}
