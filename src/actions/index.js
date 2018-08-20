@@ -22,13 +22,13 @@ export const loginToServer = (userName, password) => dispatch => {
   })
     .then(response => response.text())
     .then(token => {
-      console.log('token', token);
-      if (token === 'log in failed') {
+      console.log('token_from_server', token);
+      if (token === 'log in fail') {
         console.log('log in fail');
         dispatch(changeLoginState('log in fail'));
       } else {
         localStorage.token = token;
-        console.log('log in success');
+        console.log('log in success,token', token);
         dispatch(changeLoginState(''));
         dispatch(push('/todos'));
       }

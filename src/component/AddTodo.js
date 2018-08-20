@@ -44,7 +44,7 @@ class AddTodo extends PureComponent {
         <ul className="list-group">
           {tasks.map(task => {
             return (
-              <li key={task.id} className="list-group-item">
+              <li key={task.task} className="list-group-item">
                 {task.task}
               </li>
             );

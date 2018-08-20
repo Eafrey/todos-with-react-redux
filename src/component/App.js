@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 
 export class App extends PureComponent {
   componentDidMount() {
-    console.log('get todo token', localStorage.getItem('token'));
+    console.log('get_todo_token', localStorage.getItem('token'));
     fetch('http://localhost/api/todos', {
       method: 'GET',
       headers: new Headers({
@@ -25,6 +25,9 @@ export class App extends PureComponent {
         <HeaderInfo />
         {/* <GetServerList /> */}
         <FilterToDo />
+        <div>
+          <p>TODOS</p>
+        </div>
         <ToDoList />
         <AddToDo />
       </div>

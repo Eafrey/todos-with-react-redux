@@ -1,6 +1,6 @@
 const userInfos = {
-  avator: 'avator',
-  name: 'chs'
+  avator: '',
+  name: ''
 };
 
 const headers = (state = userInfos, action) => {

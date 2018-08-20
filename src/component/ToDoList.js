@@ -8,7 +8,7 @@ class ToDoList extends PureComponent {
     return (
       <div>
         {this.props.todos.map(todo => {
-          return <Todo key={todo.id} todo={todo} />;
+          return <Todo key={todo.date} todo={todo} />;
         })}
       </div>
     );
