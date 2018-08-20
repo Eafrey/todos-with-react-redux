@@ -1,5 +1,5 @@
 const userInfos = {
-  avator: '',
+  avator: 'avator',
   name: ''
 };
 

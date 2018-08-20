@@ -23,7 +23,6 @@ export class App extends PureComponent {
     return (
       <div>
         <HeaderInfo />
-        {/* <GetServerList /> */}
         <FilterToDo />
         <div>
           <p>TODOS</p>
